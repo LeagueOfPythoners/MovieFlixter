@@ -1,9 +1,11 @@
 from flask import Flask, render_template
-import pandas as pd
 import requests
+from environs import Env
 
 app = Flask(__name__)
-
+env = Env()
+# read .env file
+env.read_env()
 #home page
 @app.route('/')
 def home():
@@ -16,8 +18,8 @@ def top10():
 
 
     headers = {
-	"X-RapidAPI-Key": "60b5bc4261msh9a822a0d64206fep18f1c4jsn9f7333edb31f",
-	"X-RapidAPI-Host": "flixster.p.rapidapi.com"
+	"X-RapidAPI-Key": env("API_KEY"),
+	"X-RapidAPI-Host": env("API_HOST") 
     }
 
     response = requests.request("GET", url, headers=headers)
@@ -46,8 +48,8 @@ def upcoming():
     querystring = {"countryId":"usa","limit":"20"}
 
     headers = {
-	"X-RapidAPI-Key": "60b5bc4261msh9a822a0d64206fep18f1c4jsn9f7333edb31f",
-	"X-RapidAPI-Host": "flixster.p.rapidapi.com"
+	"X-RapidAPI-Key": env("API_KEY"),
+	"X-RapidAPI-Host": env("API_HOST")
     }
 
     response = requests.request("GET", url, headers=headers, params=querystring)
@@ -55,7 +57,7 @@ def upcoming():
     print(response.text)
 
     upcomingMovies = []
-    print(response.text['data']['upcoming'])
+    print(response.text['data']['upcoming'][0])
     movies = response.json()['data']['upcoming']
     for i in movies:
         name = i['name']
@@ -69,5 +71,5 @@ def upcoming():
                 'release': date}
              )
 
-app.run(use_reloader = True, debug = True)
-
+if __name__ == '__main__':
+    app.run()
