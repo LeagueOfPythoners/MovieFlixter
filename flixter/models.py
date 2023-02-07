@@ -16,5 +16,15 @@ class Movie(models.Model):
     data_created = models.DateTimeField(auto_now_add=True)
     #creation date is automatically set
     
+
+class Category(models.Model):
+    # category model
+    
+    name = models.CharField(max_length=CHARS_MAX_LENGTH, blank=True)
+    description = models.TextField(blank=True, null=True)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    # allows movie to only be under one category and if model is deleted all instances of it is deleted
+    
+    data_created = models.DateTimeField(auto_now_add=True)
     
     
