@@ -13,10 +13,14 @@ class Movie(models.Model):
     description = models.TextField(blank=True, null=True)
     # movie can be created without specifying a value for the description
     
+    categories = models.ForeignKey(Category, on_delete=models.CASCADE)
     tags = models.ManyToManyField(Tag)
+    watch_count = models.IntegerField(default=0)
+    file = models.FileField(upload_to='movies/')
+    preview_image = models.ImageField(upload_to='preview_images/')
     data_created = models.DateTimeField(auto_now_add=True)
     #creation date is automatically set
-    watch_count = models.IntegerField(default=0)
+    
     
 
 class Category(models.Model):
