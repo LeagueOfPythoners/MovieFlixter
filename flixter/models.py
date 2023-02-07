@@ -13,8 +13,10 @@ class Movie(models.Model):
     description = models.TextField(blank=True, null=True)
     # movie can be created without specifying a value for the description
     
+    tags = models.ManyToManyField(Tag)
     data_created = models.DateTimeField(auto_now_add=True)
     #creation date is automatically set
+    watch_count = models.IntegerField(default=0)
     
 
 class Category(models.Model):
