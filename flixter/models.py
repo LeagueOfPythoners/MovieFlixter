@@ -27,4 +27,12 @@ class Category(models.Model):
     
     data_created = models.DateTimeField(auto_now_add=True)
     
+
+class Tag(models.Model):
+    #tag model
+    
+    name = models.CharField(max_length=CHARS_MAX_LENGTH, blank=True)
+    description = models.TextField(blank=True, null=True)
+    
+    
     
