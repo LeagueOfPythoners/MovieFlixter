@@ -13,8 +13,8 @@ class Movie(models.Model):
     description = models.TextField(blank=True, null=True)
     # movie can be created without specifying a value for the description
     
-    categories = models.ForeignKey(Category, on_delete=models.CASCADE)
-    tags = models.ManyToManyField(Tag)
+    categories = models.ForeignKey('Category', on_delete=models.CASCADE)
+    tags = models.ManyToManyField('Tag')
     watch_count = models.IntegerField(default=0)
     file = models.FileField(upload_to='movies/')
     preview_image = models.ImageField(upload_to='preview_images/')
@@ -28,7 +28,7 @@ class Category(models.Model):
     
     name = models.CharField(max_length=CHARS_MAX_LENGTH, blank=True)
     description = models.TextField(blank=True, null=True)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    categories = models.ForeignKey('Category', on_delete=models.CASCADE)
     # allows movie to only be under one category and if model is deleted all instances of it is deleted
     
     data_created = models.DateTimeField(auto_now_add=True)
