@@ -19,6 +19,6 @@ from . import views
 
 urlpatterns = [
     path('', views.home, name= 'movies-home'),
-    path('admin/', admin.site.urls),
+    # path('admin/', admin.site.urls),
     #added route access to admin site
 ]
