@@ -7,7 +7,9 @@ from flixter.models import Upcoming
 from flixter.models import TopTen
 # Register your models here.
 
-admin.site.register(Movie)
+@admin.register(Movie)
+class MovieAdmin(admin.ModelAdmin):
+    list_display = ("name", "description", "categories", "preview_image")
 admin.site.register(Category)
 admin.site.register(Tag)
 admin.site.register(Upcoming)
