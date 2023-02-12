@@ -13,12 +13,17 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.contrib import admin
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static 
+
+from flixter.views import index_view
 #import views
 from . import views
 
 urlpatterns = [
-    path('', views.home, name= 'movies-home'),
+    path('', index_view, name= 'movies-home'),
     # path('admin/', admin.site.urls),
     #added route access to admin site
 ]
