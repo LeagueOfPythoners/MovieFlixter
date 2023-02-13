@@ -18,7 +18,6 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static 
 
-from flixter.views import index_view
 #import views
 from . import views
 
