@@ -19,12 +19,14 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import include
 from django.views.generic import RedirectView
+
 #import views
-from flixter import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('/', include('flixter.urls')),
+   # path('', include(flixterurls))
+    path('flixter/', include('flixter.urls')),
+
 ]
 
 
