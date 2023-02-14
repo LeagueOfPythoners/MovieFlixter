@@ -3,26 +3,38 @@
     <head>
         <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type ="text/css" href="{{ url_for('static',filename='style.css') }}">
-        <title>MovieFlixter</title>
+    <link rel="stylesheet" type ="text/css" href="/static/style.css">
+        <title>MovieFlixter</title
 
     </head>
-    <nav>
-        <a href="/">Home</a>
-        <a href="/top10">Top 10</a>
-        <a href="/upcoming">Upcoming</a>
-        <a href="/about">About</a>
-    </nav>
-    <body class="top10">
-       <h1 class="title">Top 10</h1>
+    <body>
+        <div class="wrapper">
+        {% comment %} Header {% endcomment %}    
+            <header>
+                <div class="teamLogo">
+                    {% comment %} MovieFlixter Logo inserted here {% endcomment %}
+                    {% comment %} <a id="logo" img src=" " alt=></a> {% endcomment %}
+                </div>
+                <nav class="main-nav">
+                    <a href="home">Home</a>
+                    <a href="top10">Top 10</a>
+                    <a href="upcoming">Upcoming</a>
+                    <a href="about">About</a>
+                    {% comment %} <a href="about">About</a> {% endcomment %}
+                </nav>
+                <nav class="sub-nav">
+                    <a href="#"></a>
+                 
 
-       <ul>
-        <!-- For loop logic of jinja template -->
-        {%for i in range(0, len)%}
-            <li>{{topMovies[i][name]}}</li>
+                    {% for movie in topMovies %}
+                    <h4 class = "movie-title">{{ movie.name}}</h4>
+                    <img href="{{movie.image}}">
+                    <ul>
+                        <li>Rotten Tomato Rating: {{movie.rating}}</li>
+                    </ul>
+                    {%endfor%}
 
-        {%endfor%}
-       </ul>
+
 
     </body>
 </html>
