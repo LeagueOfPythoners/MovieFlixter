@@ -7,3 +7,9 @@ def home(request):
 
 def about(request):
     return HttpResponse('<h1>We"re in about</h1>')
+
+def upcoming(request):
+    return render(request, 'upcoming.html')
+
+def top10(request):
+    return render(request, 'top10.html')

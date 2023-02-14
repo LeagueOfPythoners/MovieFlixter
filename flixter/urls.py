@@ -22,6 +22,10 @@ from django.conf.urls.static import static
 from . import views
 
 urlpatterns = [
-    path('', views.home, name= 'flixter-home'),
-    path('about', views.about, name = 'flixter-about' )
+    path('home', views.home, name= 'flixter-home'),
+    path('about', views.about, name = 'flixter-about' ),
+    #add the rest of the paths
+    path('upcoming', views.upcoming, name= "flixter-upcoming"),
+    path('top10', views.top10, name= "flixter-top")
+
 ]
