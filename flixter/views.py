@@ -2,8 +2,11 @@ from django.shortcuts import render
 from django.http import HttpResponse
 import requests
 import os
+from django.template.defaulttags import register
 # Create your views here.
-
+@register.filter
+def get_item(dictionary, key):
+    return dictionary.get(key)
 
 headers = {
 	"X-RapidAPI-Key": os.environ.get("API_KEY"),
@@ -28,18 +31,26 @@ def top10(request):
 
     response = requests.request("GET", url, headers=headers).json()
 
-    topMovies = []
-    print(response)
+    topMovies = {}
+
     movies = response['data']['popularity']
     for i in movies:
         if i['sortPopularity'] <11:
             name = i['name']
             image_url = i['posterImage']['url']
-            rating = i['tomatometer']
-            topMovies.append(
+            rating = i['tomatoRating']['tomatometer']
+            
+            '''topMovies.append(
                 {'name':name,
                 'image' :image_url,
                 'rating' :rating}
-             )
-
+             ) cannot be a list has to be a dict''' 
+            movie = {'name':name, 'image': image_url, 'rating': rating}
+            topMovies[name]= movie
+    i = 0
+    '''while i<10:
+        print(list(topMovies.values())[i]['name'])
+        i+=1'''
+    for i in topMovies:
+        print(topMovies[i]['rating'])
     return render(request, 'top10.html', topMovies)
