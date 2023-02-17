@@ -2,11 +2,10 @@
 <html>
     <head>
         <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type ="text/css" href="/static/style.css">
-        <title>MovieFlixter</title
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>MovieFlixter</title>
+        </head>
 
-    </head>
     <body>
         <div class="wrapper">
         {% comment %} Header {% endcomment %}    
@@ -22,18 +21,16 @@
                     <a href="about">About</a>
                     {% comment %} <a href="about">About</a> {% endcomment %}
                 </nav>
-                <nav class="sub-nav">
-                    <a href="#"></a>
-                 
+            <div>
 
                     {% for movie in topMovies %}
-                    <h4 class = "movie-title">{{ movie.name}}</h4>
-                    <img href="{{movie.image}}">
+                    <h4 class = "movie-title">{{ topMovies.movie.name}}</h4>
+                    <img href= {{ topMovies.movie.image }}>
                     <ul>
-                        <li>Rotten Tomato Rating: {{movie.rating}}</li>
+                        <li>Rotten Tomato Rating: {{ topMovies.movie.rating }}}</li>
                     </ul>
                     {%endfor%}
-
+            </div>
 
 
     </body>
