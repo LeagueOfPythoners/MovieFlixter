@@ -16,7 +16,7 @@ def home(request):
     return render(request, 'home.html')
 
 def about(request):
-    return HttpResponse('<h1>We"re in about</h1>')
+    return render(request,'about.html' )
 
 def upcoming(request):
     return render(request, 'upcoming.html')
@@ -48,9 +48,7 @@ def top10(request):
             movie = {'name':name, 'image': image_url, 'rating': rating}
             topMovies[name]= movie
     i = 0
-    '''while i<10:
-        print(list(topMovies.values())[i]['name'])
-        i+=1'''
+   
     for i in topMovies:
         print(topMovies[i]['rating'])
     return render(request, 'top10.html', topMovies)
