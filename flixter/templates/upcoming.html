@@ -2,11 +2,10 @@
 <html>
     <head>
         <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type ="text/css" href="/static/style.css">
-        <title>MovieFlixter</title
-
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>MovieFlixter</title>
     </head>
+
     <body>
         <div class="wrapper">
         {% comment %} Header {% endcomment %}    
@@ -15,6 +14,7 @@
                     {% comment %} MovieFlixter Logo inserted here {% endcomment %}
                     {% comment %} <a id="logo" img src=" " alt=></a> {% endcomment %}
                 </div>
+                </header>
                 <nav class="main-nav">
                     <a href="home">Home</a>
                     <a href="top10">Top 10</a>
@@ -22,28 +22,19 @@
                     <a href="about">About</a>
                     {% comment %} <a href="about">About</a> {% endcomment %}
                 </nav>
-                <nav class="sub-nav">
-                    <a href="#"></a>
-                    <form action="/" method="POST">
-                        {% csrf_token %}
-                        {{search_form.as_p}}
-                        <button type="submit">
-                            <i class="fas fa-search sub-nav-logo"></i>
-                        </button>
-                    </form>
-                    <a href="#"><i class="fas fa-bell sub-nav-logo"></i></a>
-                    {%if request.user.is_authenticated%}
-                        {{request.user}}
-                        <a href="/logout"><i class="fas fa-power-off sub-nav-logo"></i>Logout</a>
-                    {% else %}
-                        <a href="/register">Register</a><a href="/login">Login</a>
-                    {% endif %}
-                </nav>
-            </header>
-        {% comment %} End of header {% endcomment %}
-    
+            <main>
+            {% block content %}
+            
+                    {% for movie in posts %}
+                    <h3 class = "movie-title" >{{ movie.name }}</h3>
+                    <img class= "movie-image" src= "{{movie.image}}" style="width: 15em;" >
+                    <h4>Release Date: {{ movie.date }}</h4>
 
-
-
+                    {% endfor %}
+                    
+            {% endblock content %}
+            
+            </main>
+            </div>
     </body>
 </html>
