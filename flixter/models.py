@@ -60,7 +60,7 @@ class TopTen(models.Model):
     #creation date is automatically set
     
     def __str__(self):
-        return f"{self.name}, {self.image}, {self.categories}, {self.rating}, {self.emsId}"
+        return f"{self.name}, {self.image}, {self.rating}, {self.emsId}"
 class Category(models.Model):
     # category model
     

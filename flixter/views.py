@@ -53,6 +53,5 @@ def top10(request):
     i = 0
     all_movies = models.TopTen.objects.all()
     posts= {'posts': all_movies}
-    for i in topMovies:
-        print(topMovies[i]['rating'])
+    print(posts['posts'][0].name)
     return render(request, 'top10.html', posts)
