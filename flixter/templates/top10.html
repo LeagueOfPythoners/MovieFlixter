@@ -26,10 +26,13 @@
             {% block content %}
             
                     {% for movie in posts %}
+                    <div class= "movie-column">
+                    <a href = "{{movie.emsId }}">
                     <h4 class = "movie-title" >{{ movie.name }}</h4>
                     <img class= "movie-image" src= "{{movie.image}}" style="width: 15em;" >
                     <p>Rotten Tomato Rating: {{ movie.rating }}</p>
-
+                    </a>
+                    </div>
                     {% endfor %}
                     
             {% endblock content %}
