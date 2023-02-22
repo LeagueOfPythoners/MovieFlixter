@@ -26,10 +26,9 @@
             {% block content %}
             
                     {% for movie in posts %}
-                    <p>Hi</p>
-                    <h4 class = "movie-title" >{{ posts.name }}</h4>
-                    <img class= "movie-image" href= "{{MEDIA_URL}}{{posts.image}}" style="width: 15em;" >
-                    <p>Rotten Tomato Rating: {{ posts.rating }}</p>
+                    <h4 class = "movie-title" >{{ movie.name }}</h4>
+                    <img class= "movie-image" src= "{{movie.image}}" style="width: 15em;" >
+                    <p>Rotten Tomato Rating: {{ movie.rating }}</p>
 
                     {% endfor %}
                     
