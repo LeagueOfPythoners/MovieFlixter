@@ -30,18 +30,17 @@ class Upcoming(models.Model):
     name = models.CharField(max_length=CHARS_MAX_LENGTH, blank=True)
     #adds column named name into movie table with no more than 150 characters
     
-    description = models.TextField(blank=True, null=True)
+    image = models.TextField(blank=True, null=True)
     # movie can be created without specifying a value for the description
-    
-    categories = models.ForeignKey('Category', on_delete=models.CASCADE)
+    date = models.CharField(max_length=CHARS_MAX_LENGTH, blank=True)
     tags = models.ManyToManyField('Tag')
-    file = models.FileField(upload_to='movies/')
+    emsId = models.TextField(blank=True, null=True)
     preview_image = models.ImageField(upload_to='preview_images/')
     data_created = models.DateTimeField(auto_now_add=True)
     #creation date is automatically set
     
     def __str__(self):
-        return f"{self.name}, {self.description}, {self.categories}, {self.preview_image}"
+        return f"{self.name}, {self.date}, {self.image}, {self.emsId}"
     
 class TopTen(models.Model):
     # movie model class (creates a table named model into our database)

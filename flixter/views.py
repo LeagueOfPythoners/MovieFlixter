@@ -20,7 +20,28 @@ def about(request):
     return render(request,'about.html' )
 
 def upcoming(request):
-    return render(request, 'upcoming.html')
+    headers = {
+	"X-RapidAPI-Key": os.getenv("API_KEY"),
+	"X-RapidAPI-Host": os.environ.get("API_HOST") 
+    }
+    url = 'https://flixster.p.rapidapi.com/movies/get-upcoming'
+    querystring = {"countryId": "usa", "limit":"100"}
+    response = requests.request("GET", url, headers=headers).json()
+
+
+    movies = response['data']['upcoming']
+    for i in movies:
+        name_m = i['name']
+        image_url = i['posterImage']['url']
+        release_date = i['releaseDate']
+        emsId_m = i['emsVersionId']
+        m = models.Upcoming.objects.create(name= name_m, image=image_url, emsId = emsId_m, date= release_date)
+        m.save()
+    
+            
+    all_movies = models.Upcoming.objects.all().values("name", "image", "date")
+    posts= {'posts': all_movies}
+    return render(request, 'upcoming.html', posts)
 
 def top10(request):
     #get top 10 via reuqest limit popularity to 10
