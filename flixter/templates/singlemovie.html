@@ -25,13 +25,11 @@
             <main>
             {% block content %}
             
-                   <h4 class = "movie-title" >{{ movie.name }}</h4>
-                    <img class= "movie-image" src= "{{movie.image}}" style="width: 15em;" >
-                    <h4>Release Date: {{ movie.date }}</h4>
-                    <p><strong>Description: </strong> {{ movie.description }}</p>
-                    <h4>Genres: {{ movie.tags }}</h4>
-                    <h4>Rating: {{movie.rating }} </h4>
-                    <h4>Release Date: {{ movie.date }}</h4>
+                   <h4 class = "movie-title" >{{ post.name }}</h4>
+                    <img class= "movie-image" src= "{{ post.image}}" style="width: 15em;" >
+                    <h4>Release Date: {{ post.date }}</h4>
+                    <p><strong>Description: </strong> {{ post.description }}</p>
+                    <h4>Genres: {{ post.tags }}</h4>
 
                     
             {% endblock content %}
