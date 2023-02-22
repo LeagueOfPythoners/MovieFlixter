@@ -26,6 +26,7 @@ urlpatterns = [
     path('about', views.about, name = 'flixter-about' ),
     #add the rest of the paths
     path('upcoming', views.upcoming, name= "flixter-upcoming"),
-    path('top10', views.top10, name= "flixter-top")
+    path('top10', views.top10, name= "flixter-top"),
+    path('<str:emsId>', views.one_movie, name = "single-movie")
 
 ]

@@ -20,10 +20,7 @@ def about(request):
     return render(request,'about.html' )
 
 def upcoming(request):
-    headers = {
-	"X-RapidAPI-Key": os.getenv("API_KEY"),
-	"X-RapidAPI-Host": os.environ.get("API_HOST") 
-    }
+    
     url = 'https://flixster.p.rapidapi.com/movies/get-upcoming'
     querystring = {"countryId": "usa", "limit":"100"}
     response = requests.request("GET", url, headers=headers).json()
@@ -35,8 +32,12 @@ def upcoming(request):
         image_url = i['posterImage']['url']
         release_date = i['releaseDate']
         emsId_m = i['emsVersionId']
-        m = models.Upcoming.objects.create(name= name_m, image=image_url, emsId = emsId_m, date= release_date)
-        m.save()
+        try:
+
+            m = models.Upcoming.objects.get(name= name_m, image=image_url, emsId = emsId_m, date= release_date)
+        except models.Upcoming.DoesNotExist:
+            m = models.Upcoming.objects.create(name= name_m, image=image_url, emsId = emsId_m, date= release_date)
+            m.save()
     
             
     all_movies = models.Upcoming.objects.all().values("name", "image", "date")
@@ -45,15 +46,10 @@ def upcoming(request):
 
 def top10(request):
     #get top 10 via reuqest limit popularity to 10
-    headers = {
-	"X-RapidAPI-Key": os.getenv("API_KEY"),
-	"X-RapidAPI-Host": os.environ.get("API_HOST") 
-    }
     url = "https://flixster.p.rapidapi.com/movies/get-popularity"
 
     response = requests.request("GET", url, headers=headers).json()
 
-    topMovies = {}
 
     movies = response['data']['popularity']
     for i in movies:
@@ -62,16 +58,44 @@ def top10(request):
             image_url = i['posterImage']['url']
             rating_m = i['tomatoRating']['tomatometer']
             emsId_m = i['emsVersionId']
-            m = models.TopTen.objects.create(name= name_m, image=image_url, emsId = emsId_m, rating= rating_m)
-            m.save()
-            '''topMovies.append(
-                {'name':name,
-                'image' :image_url,
-                'rating' :rating}
-             ) cannot be a list has to be a dict''' 
+
+            try:
+                m = models.TopTen.objects.get(name= name_m, image=image_url, emsId = emsId_m, rating= rating_m)
+            except models.TopTen.DoesNotExist:
+                m = models.TopTen.objects.create(name= name_m, image=image_url, emsId = emsId_m, rating= rating_m)
+                m.save()
             
             
-    i = 0
-    all_movies = models.TopTen.objects.all().values("name", "image", "rating")
+            
+    all_movies = models.TopTen.objects.all().values("name", "image", "rating", 'emsId')
     posts= {'posts': all_movies}
     return render(request, 'top10.html', posts)
+
+def one_movie(request, emsId):
+
+    url = "https://flixster.p.rapidapi.com/movies/detail"
+
+    querystring = {"emsVersionId": emsId }
+
+    response = requests.request("GET", url, headers=headers, params=querystring).json()
+    single_movie = response['data']['movie']
+
+    name_m = single_movie['name']
+    description_m = single_movie['synopsis']
+    date_m = single_movie['releaseDate']
+    image_m = single_movie['posterImage']['url']
+    tags_m = single_movie['genres'][0]['name']
+    rating_m = single_movie['tomatoRating']['tomatometer']
+
+    try:
+        models.Movie.objects.get(name=name_m, description = description_m, rating= rating_m,
+                                 tags = tags_m, date = date_m, image = image_m )
+        
+    except models.Movie.DoesNotExist:
+        m =  models.Movie.objects.get(name=name_m, description = description_m, rating= rating_m,
+                                 tags = tags_m, date = date_m, image = image_m )
+        m.save()
+        
+    content = models.Movie.objects.get(name= name_m, description= description_m)
+    movie = {'posts':content}
+    return render(request, 'singlemovie.html', movie)

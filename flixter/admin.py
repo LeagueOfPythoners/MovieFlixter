@@ -9,9 +9,9 @@ from flixter.models import TopTen
 
 @admin.register(Movie)
 class MovieAdmin(admin.ModelAdmin):
-    list_display = ("name", "description", "categories", "preview_image")
+    list_display = ("name", "description", "preview_image")
     #list_filter = ("categories")
-admin.site.register(Category)
+#admin.site.register(Category)
 admin.site.register(Tag)
 admin.site.register(Upcoming)
 admin.site.register(TopTen)
