@@ -40,7 +40,7 @@ def upcoming(request):
             m.save()
     
             
-    all_movies = models.Upcoming.objects.all().values("name", "image", "date")
+    all_movies = models.Upcoming.objects.all().values("name", "image", "date", "emsId")
     posts= {'posts': all_movies}
     return render(request, 'upcoming.html', posts)
 
@@ -85,17 +85,18 @@ def one_movie(request, emsId):
     date_m = single_movie['releaseDate']
     image_m = single_movie['posterImage']['url']
     tags_m = single_movie['genres'][0]['name']
-    rating_m = single_movie['tomatoRating']['tomatometer']
+
+    
 
     try:
-        models.Movie.objects.get(name=name_m, description = description_m, rating= rating_m,
+        models.Movie.objects.get(name=name_m, description = description_m,
                                  tags = tags_m, date = date_m, image = image_m )
         
     except models.Movie.DoesNotExist:
-        m =  models.Movie.objects.get(name=name_m, description = description_m, rating= rating_m,
+        m =  models.Movie.objects.create(name=name_m, description = description_m, 
                                  tags = tags_m, date = date_m, image = image_m )
         m.save()
         
-    content = models.Movie.objects.get(name= name_m, description= description_m)
-    movie = {'posts':content}
-    return render(request, 'singlemovie.html', movie)
+    content = models.Movie.objects.get(name= name_m)
+    post = {'post':content}
+    return render(request, 'singlemovie.html', post)
