@@ -3,6 +3,7 @@ from django.http import HttpResponse
 import requests
 import os
 from django.template.defaulttags import register
+from . import models
 # Create your views here.
 @register.filter
 def get_item(dictionary, key):
@@ -36,19 +37,22 @@ def top10(request):
     movies = response['data']['popularity']
     for i in movies:
         if i['sortPopularity'] <11:
-            name = i['name']
+            name_m = i['name']
             image_url = i['posterImage']['url']
-            rating = i['tomatoRating']['tomatometer']
-            
+            rating_m = i['tomatoRating']['tomatometer']
+            emsId_m = i['emsVersionId']
+            m = models.TopTen.objects.create(name= name_m, image=image_url, emsId = emsId_m, rating= rating_m)
+            m.save()
             '''topMovies.append(
                 {'name':name,
                 'image' :image_url,
                 'rating' :rating}
              ) cannot be a list has to be a dict''' 
-            movie = {'name':name, 'image': image_url, 'rating': rating}
-            topMovies[name]= movie
+            
+            
     i = 0
-   
+    all_movies = models.TopTen.objects.all()
+    posts= {'posts': all_movies}
     for i in topMovies:
         print(topMovies[i]['rating'])
-    return render(request, 'top10.html', topMovies)
+    return render(request, 'top10.html', posts)

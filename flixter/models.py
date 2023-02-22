@@ -49,19 +49,18 @@ class TopTen(models.Model):
     name = models.CharField(max_length=CHARS_MAX_LENGTH, blank=True)
     #adds column named name into movie table with no more than 150 characters
     
-    description = models.TextField(blank=True, null=True)
+    image = models.TextField(blank=True, null=True)
     # movie can be created without specifying a value for the description
-    
-    categories = models.ForeignKey('Category', on_delete=models.CASCADE)
+    emsId=models.CharField(max_length=CHARS_MAX_LENGTH, blank=True )
     tags = models.ManyToManyField('Tag')
-    watch_count = models.IntegerField(default=0)
+    rating = models.IntegerField(default=0)
     file = models.FileField(upload_to='movies/')
     preview_image = models.ImageField(upload_to='preview_images/')
     data_created = models.DateTimeField(auto_now_add=True)
     #creation date is automatically set
     
     def __str__(self):
-        return f"{self.name}, {self.description}, {self.categories}, {self.watch_count}, {self.preview_image}"
+        return f"{self.name}, {self.image}, {self.categories}, {self.rating}, {self.emsId}"
 class Category(models.Model):
     # category model
     
