@@ -23,24 +23,25 @@
                     {% comment %} <a href="about">About</a> {% endcomment %}
                 </nav>
             <main>
-             {% block content %}
-             <br>
-
-             <form class ="d-flex" method=POST action ="search" >
-              
-                {% csrf_token %}
-
-                <input class= "form-control" type="search" placeholder= "Search a Movie" aria-label="Search"
-                name = 'searched'>
+            {% block content %}
+            {% if searched %}
+            <h1>Results: </h1>
+                {% for i in post %}
                 
-                <button class= "btn-outline-secondary" type="submit">Search</button>
-             </form>
-             {% endblock content %}
+                <a href="{{i.emsId}}"><h3>{{i.name}}</h3></a>
+                <img src="{{i.image}}">
+
+                {% endfor %}
+            
+            {% else %}
+
+            <h1>No results</h1>
+
+            {% endif %}
+
+            {% endblock content %}
+            
             </main>
             </div>
-    </body>
-</html>
-
-
     </body>
 </html>
