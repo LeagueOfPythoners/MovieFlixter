@@ -11,11 +11,8 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 import os
 from pathlib import Path
-import environ 
 
-# Initialise environment variables
-env = environ.Env()
-environ.Env.read_env()
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -33,6 +30,8 @@ DEBUG = True
 ALLOWED_HOSTS = []
 # API_HOST = flixter.p.rapidapi.co
 # API_KEY = "60b5bc4261msh9a822a0d64206fep18f1c4jsn9f7333edb31f"
+
+
 
 # Application definition
 

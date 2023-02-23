@@ -3,15 +3,15 @@ from django.http import HttpResponse
 import requests
 import os
 from django.template.defaulttags import register
-from . import models
+# from models.py import models
 # Create your views here.
 @register.filter
 def get_item(dictionary, key):
     return dictionary.get(key)
 
 headers = {
-	"X-RapidAPI-Key": os.environ.get("API_KEY"),
-	"X-RapidAPI-Host": os.environ.get("API_HOST") 
+	"X-RapidAPI-Key": os.getenv("API_KEY"),
+	"X-RapidAPI-Host": os.getenv("API_HOST") 
     }
 def home(request):
     return render(request, 'home.html')
@@ -23,7 +23,7 @@ def upcoming(request):
     
     url = 'https://flixster.p.rapidapi.com/movies/get-upcoming'
     querystring = {"countryId": "usa", "limit":"100"}
-    response = requests.request("GET", url, headers=headers).json()
+    response = requests.request("GET", url, headers=headers, params=querystring).json()
 
 
     movies = response['data']['upcoming']
@@ -49,6 +49,7 @@ def top10(request):
     url = "https://flixster.p.rapidapi.com/movies/get-popularity"
 
     response = requests.request("GET", url, headers=headers).json()
+    print(response)
 
 
     movies = response['data']['popularity']
