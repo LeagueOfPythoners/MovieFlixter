@@ -79,12 +79,32 @@ def one_movie(request, emsId):
 
     response = requests.request("GET", url, headers=headers, params=querystring).json()
     single_movie = response['data']['movie']
-
+    print(single_movie['name'])
     name_m = single_movie['name']
-    description_m = single_movie['synopsis']
-    date_m = single_movie['releaseDate']
-    image_m = single_movie['posterImage']['url']
-    tags_m = single_movie['genres'][0]['name']
+    description_m = ''
+    try:
+        description_m = single_movie['synopsis']
+    except: 
+        description_m = "No sypnosis assigned yet."
+
+    date_m = ''
+    try:
+        date_m = single_movie['releaseDate']
+    except:
+        date_m = 'None'
+    image_m =''
+   # print(single_movie['posterImage']['url']==None)
+    try:
+        image_m = single_movie['posterImage']['url']
+
+    except:
+        image_m = 'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg'
+
+    tags_m = ''
+
+    try:
+        tags_m = single_movie['genres'][0]['name']
+    except: tags_m = 'No Genre Assigned'
 
     
 
@@ -93,11 +113,11 @@ def one_movie(request, emsId):
                                  tags = tags_m, date = date_m, image = image_m )
         
     except models.Movie.DoesNotExist:
-        m =  models.Movie.objects.create(name=name_m, description = description_m, 
+        models.Movie.objects.update_or_create(name=name_m, description = description_m, 
                                  tags = tags_m, date = date_m, image = image_m )
-        m.save()
         
-    content = models.Movie.objects.get(name= name_m)
+         
+    content = models.Movie.objects.get(name= name_m, description=description_m)
     post = {'post':content}
     return render(request, 'singlemovie.html', post)
 
@@ -120,7 +140,7 @@ def search(request):
         #get name
             m_name = i['name']
         #get image
-            m_image = i['posterImage']['url']
+            #m_image = i['posterImage']['url']
         #get emsId version
             m_emsId = i['emsVersionId']
             if m_image == None:
@@ -142,8 +162,9 @@ def search(request):
                     m.save()
 
         content = models.Movie.objects.filter(name__contains=searched).values("name", "emsId", "image")
-        post = {'searched':content}
-        return render(request,'search.html', post, searched )
+        
+        return render(request,'search.html', {'searched':searched,
+                'content':content} )
 
 
 

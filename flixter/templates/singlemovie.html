@@ -26,7 +26,9 @@
             {% block content %}
             
                    <h4 class = "movie-title" >{{ post.name }}</h4>
+                   {% if post.image %}
                     <img class= "movie-image" src= "{{ post.image}}" style="width: 15em;" >
+                    {% endif %}
                     <h4>Release Date: {{ post.date }}</h4>
                     <p><strong>Description: </strong> {{ post.description }}</p>
                     <h4>Genres: {{ post.tags }}</h4>

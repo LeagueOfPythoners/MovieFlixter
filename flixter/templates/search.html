@@ -25,11 +25,10 @@
             <main>
             {% block content %}
             {% if searched %}
-            <h1>Results: </h1>
-                {% for i in post %}
+            <h1>Results for :{{searched}} </h1>
+                {% for i in content %}
                 
                 <a href="{{i.emsId}}"><h3>{{i.name}}</h3></a>
-                <img src="{{i.image}}">
 
                 {% endfor %}
             

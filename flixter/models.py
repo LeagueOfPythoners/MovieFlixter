@@ -14,7 +14,7 @@ class Movie(models.Model):
     rating = models.IntegerField(default=0)
     description = models.TextField(blank=True, null=True)
     # movie can be created without specifying a value for the description
-    date = models.CharField(max_length=CHARS_MAX_LENGTH,blank=True )
+    date = models.CharField(max_length=CHARS_MAX_LENGTH,blank=True,null=True )
     tags = models.CharField(max_length=CHARS_MAX_LENGTH, blank=True)
     watch_count = models.IntegerField(default=0)
     file = models.FileField(upload_to='movies/')
