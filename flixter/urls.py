@@ -30,9 +30,9 @@ urlpatterns = [
     path('upcoming', views.upcoming, name= "flixter-upcoming"),
     path('top10', views.top10, name= "flixter-top10"),
     path('contact', views.contact, name= "flixter-contact"),
-    # path('search', views.search, name= 'flixter-search'),
+    path('search', views.get_movies, name= 'flixter-search'),
     # path('<str:emsId>', views.one_movie, name = "single-movie"),
     
-    # path('<str:movie_id> ,views.movie_description, name = "movie_description")
+    path('<str:movie_id>' ,views.movie_description, name = "movie_description")
 
 ]
