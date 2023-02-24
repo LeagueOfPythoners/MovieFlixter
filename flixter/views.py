@@ -127,8 +127,9 @@ def movie_description(request, movie_id):
                                   tags = tags_m, date = date_m, image = image_m )
         
      except Movie.DoesNotExist:
-         Movie.objects.update_or_create(name=name_m, description = description_m, 
+         m =Movie.objects.create(name=name_m, description = description_m, 
                                   tags = tags_m, date = date_m, image = image_m )
+         m.save()
         
          
      content = Movie.objects.get(name= name_m, description=description_m)

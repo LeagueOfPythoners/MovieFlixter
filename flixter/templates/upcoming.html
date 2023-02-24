@@ -28,9 +28,11 @@
              {% for movie in posts %}
                     <a href ="{{movie.movie_id}}">
                     <h3 class = "movie-title" >{{ movie.name }}</h3></a>
-                    <img class= "movie-image" src= "{{movie.image}}" style="width: 15em;" >
-                    <h4>Release Date: {{ movie.date }}</h4>
+                                        <h4>Release Date: {{ movie.date }}</h4>
 
+                    <img class= "movie-image" src= "{{movie.image}}" style="width: 15em;" >
+<br>
+<br>
                     {% endfor %}
 
                     

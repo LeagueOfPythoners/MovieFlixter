@@ -19,24 +19,27 @@
                 </header>
                
             <main>
-            {% block content %}
-                    {% include "navbar.html" %}
 
-                    {% for movie in posts %}
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                
+            {% block content %}
+                                {% include "navbar.html" %}
+
+            <br>
+            <br>
+            <br>
+            <br>
+           
+
+
+                    {% for movie in posts %} 
 
                     <div class= "movie-column">
                     <a href = "{{ movie.movie_id }}">
                     <h3 class = "movie-title" >{{ movie.name }}</h3></a>
+                                        <h4>Rotten Tomato Rating: {{ movie.rating }}</h4>
+
                     <img class= "movie-image" src= "{{movie.image}}" style="width: 15em;" >
-                    <h4>Rotten Tomato Rating: {{ movie.rating }}</h4>
                     </div>
+                    <br>
                     {% endfor %}
                     
             {% endblock content %}
