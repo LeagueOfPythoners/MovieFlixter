@@ -11,31 +11,7 @@ headers = {
 	"X-RapidAPI-Host": os.getenv("API_HOST") 
 }
 
-def get_movies(request):
-    all_movies = {}
-    if 'name' in request.GET:
-        name = request.GET['name']
-        url = 'https://flixster.p.rapidapi.com/movies/get-upcoming' % name
-        querystring = {"countryId": "usa", "limit":"100"}
-        response = requests.request("GET", url, headers=headers, params=querystring)
-        data = response.json()
-        movies = data['movies']
 
-        for i in movies:
-            movie_data = Movie(
-                name = i['name'],
-                image = i['posterImage']['url'],
-                description = i['synopsis'],
-                tags = i['genres'][0]['name'],
-                rating = i['tomatoRating'],
-                movie_id = i['emsVersionId'],
-            )
-    
-            movie_data.save()
-            all_movies = Movie.objects.all().order_by('-id')
-
-    return render (request, 'movie.html', {"all_movies": 
-    all_movies} )
 
 
     
@@ -63,7 +39,6 @@ def top10(request):
      url = "https://flixster.p.rapidapi.com/movies/get-popularity"
 
      response = requests.request("GET", url, headers=headers).json()
-     print(response)
 
 
      movies = response['data']['popularity']
@@ -114,14 +89,12 @@ def upcoming(request):
 
 
 def movie_description(request, movie_id):
-     print('one_movie function')
      url = "https://flixster.p.rapidapi.com/movies/detail"
 
      querystring = {"emsVersionId": movie_id }
 
      response = requests.request("GET", url, headers=headers, params=querystring).json()
      single_movie = response['data']['movie']
-     print(single_movie['name'])
      name_m = single_movie['name']
      description_m = ''
      try:
@@ -163,50 +136,49 @@ def movie_description(request, movie_id):
      movie = {'post':content}
      return render(request, 'movie_description.html', movie)
 
-# def search(request):
-#     print('search function')
-#     url = "https://flixster.p.rapidapi.com/search"
-#     if request.method != "POST":
-#         return render(request, 'search.html', {})
-#     else:
-#         searched = request.POST.get('searched')
-#         querystring = {"query":searched}
-#         response = requests.request("GET", url, headers=headers, params=querystring).json()
-#         data = response['data']['search']['movies']
+def get_movies(request):
+     url = "https://flixster.p.rapidapi.com/search"
+     if request.method != "POST":
+         return render(request, 'search.html', {})
+     else:
+         searched = request.POST.get('searched')
+         querystring = {"query":searched}
+         response = requests.request("GET", url, headers=headers, params=querystring).json()
+         data = response['data']['search']['movies']
 
-#         m_name= ''
-#         m_image = ''
-#         m_emsId = ''
+         m_name= ''
+         m_image = ''
+         m_emsId = ''
 
-#         for i in data:
-#         #get name
-#             m_name = i['name']
-#         #get image
-#             #m_image = i['posterImage']['url']
-#         #get emsId version
-#             m_emsId = i['emsVersionId']
-#             if m_image == None:
-#                 try:
-#                     models.Movie.objects.get(name=m_name, emsId = m_emsId )
+         for i in data:
+         #get name
+             m_name = i['name']
+         #get image
+             #m_image = i['posterImage']['url']
+         #get emsId version
+             m_emsId = i['emsVersionId']
+             if m_image == None:
+                 try:
+                     Movie.objects.get(name=m_name, emsId = m_emsId )
         
-#                 except models.Movie.DoesNotExist:
-#                     m = models.Movie.objects.create(name=m_name, emsId = m_emsId )
+                 except Movie.DoesNotExist:
+                     m = Movie.objects.create(name=m_name, emsId = m_emsId )
 
-#                     m.save()
-#             else:
-#     #create the movie or get the movie
-#                 try:
-#                     models.Movie.objects.get(name=m_name, emsId = m_emsId, image = m_image )
+                     m.save()
+             else:
+     #create the movie or get the movie
+                 try:
+                     Movie.objects.get(name=m_name, emsId = m_emsId, image = m_image )
         
-#                 except models.Movie.DoesNotExist:
-#                     m = models.Movie.objects.create(name=m_name, emsId = m_emsId, image = m_image )
+                 except Movie.DoesNotExist:
+                     m = Movie.objects.create(name=m_name, emsId = m_emsId, image = m_image )
 
-#                     m.save()
+                     m.save()
 
-#         content = models.Movie.objects.filter(name__contains=searched).values("name", "emsId", "image")
+         content = Movie.objects.filter(name__contains=searched).values("name", "emsId", "image")
         
-#         return render(request,'search.html', {'searched':searched,
-#                 'content':content} )
+         return render(request,'movie.html', {'searched':searched,
+                 'content':content} )
 
 
 
