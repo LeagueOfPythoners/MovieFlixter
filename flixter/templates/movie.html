@@ -23,9 +23,7 @@
             <br>
                 <div class = "container">
                     <div class = "text-center container">
-                        <br>
-                        
-                        
+                        <br>    
                         <form method="GET">
                             <input type = "text" name = "name" placeholder="Search..." class = "text-center">
                             <button type = "submit" class = "btn-danger btn-sm">SEARCH MOVIES</button>
@@ -56,7 +54,27 @@
                         {% endfor %}
                     </div>
                 </div>
-            {% endblock %}
+                </header>
+               
+            <main>
+            {% if searched %}
+            <h1>Results for :{{searched}} </h1>
+                {% for i in content %}
+                
+                <a href="{{i.emsId}}"><h3>{{i.name}}</h3></a>
+
+                {% endfor %}
+            
+            {% else %}
+
+            <h1>No results</h1>
+
+            {% endif %}
+
+            {% endblock content %}
+
+           
+            
             </main>
             </div>
     </body>

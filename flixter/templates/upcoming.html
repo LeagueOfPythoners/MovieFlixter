@@ -15,6 +15,16 @@
             <br>
             <br>
             <br>
+        <div class="wrapper">
+        {% comment %} Header {% endcomment %}    
+            <header>
+                <div class="teamLogo">
+                    {% comment %} MovieFlixter Logo inserted here {% endcomment %}
+                    {% comment %} <a id="logo" img src=" " alt=></a> {% endcomment %}
+                </div>
+                </header>
+               
+            <main>
              {% for movie in posts %}
                     <a href ="{{movie.movie_id}}">
                     <h3 class = "movie-title" >{{ movie.name }}</h3></a>
