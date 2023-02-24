@@ -25,11 +25,11 @@ urlpatterns = [
     path('home', views.home, name= 'flixter-home'),
     path('about', views.about, name = 'flixter-about' ),
     #add the rest of the paths
-    path('upcoming', views.get_movies, name= "flixter-upcoming"),
+    path('upcoming', views.upcoming, name= "flixter-upcoming"),
     path('top10', views.top10, name= "flixter-top10"),
     # path('search', views.search, name= 'flixter-search'),
     # path('<str:emsId>', views.one_movie, name = "single-movie"),
     path('', views.get_movies, name = "get_movies"),
-    path('movies/<int:id>/',views.movies_description, name = "movie_description")
+    path('movies/<int:id>/',views.movie_description, name = "movie_description")
 
 ]

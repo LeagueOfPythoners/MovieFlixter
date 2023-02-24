@@ -37,7 +37,7 @@ def get_movies(request):
     return render (request, 'movie.html', {"all_movies": 
     all_movies} )
 
-def movie_detail(request, id):
+def movie_description(request, id):
     movie = Movie.objects.get(id = id)
     print(movie)
     return render (
@@ -63,6 +63,9 @@ def about(request):
 
 def top10(request):
     return render(request, 'top10.html')
+
+def upcoming(request):
+    return render(request, 'upcoming.html')
 
 # def get_movies(request):
     
