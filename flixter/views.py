@@ -79,7 +79,6 @@ def one_movie(request, emsId):
 
     response = requests.request("GET", url, headers=headers, params=querystring).json()
     single_movie = response['data']['movie']
-    print(single_movie['name'])
     name_m = single_movie['name']
     description_m = ''
     try:
