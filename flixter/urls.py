@@ -19,8 +19,6 @@ from django.conf import settings
 from django.conf.urls.static import static 
 
 #import views
-import sys
-sys.path.insert(0, 'Users/BLloyd/MovieFlixter/flixter/templates')
 import views
 
 urlpatterns = [
