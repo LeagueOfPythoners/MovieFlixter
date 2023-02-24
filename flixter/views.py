@@ -89,52 +89,52 @@ def upcoming(request):
 
 
 def movie_description(request, movie_id):
-     url = "https://flixster.p.rapidapi.com/movies/detail"
+    url = "https://flixster.p.rapidapi.com/movies/detail"
 
-     querystring = {"emsVersionId": movie_id }
+    querystring = {"emsVersionId": movie_id }
 
-     response = requests.request("GET", url, headers=headers, params=querystring).json()
-     single_movie = response['data']['movie']
-     name_m = single_movie['name']
+    response = requests.request("GET", url, headers=headers, params=querystring).json()
+    single_movie = response['data']['movie']
+    name_m = single_movie['name']
 
-     try:
+    try:
          description_m = single_movie['synopsis']
-     except: 
+    except: 
          description_m = "No sypnosis assigned yet."
 
-     try:
+    try:
          date_m = single_movie['releaseDate']
-     except:
+    except:
          date_m = 'None'
     # print(single_movie['posterImage']['url']==None)
-     try:
+    try:
          image_m = single_movie['posterImage']['url']
 
-     except:
+    except:
          image_m = 'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg'
 
 
-     try:
+    try:
          tags_m = single_movie['genres'][0]['name']
 
-     except: 
+    except: 
          tags_m = 'No Genre Assigned'
 
-    
+    print(tags_m)
 
-     try:
+    try:
          Movie.objects.get(name=name_m, description = description_m,
                                   tags = tags_m, date = date_m, image = image_m )
         
-     except Movie.DoesNotExist:
+    except Movie.DoesNotExist:
          m =Movie.objects.create(name=name_m, description = description_m, 
                                   tags = tags_m, date = date_m, image = image_m )
          m.save()
         
          
-     content = Movie.objects.get(name= name_m, description=description_m)
-     movie = {'post':content}
-     return render(request, 'movie_description.html', movie)
+    content = Movie.objects.get(name= name_m, description=description_m)
+    movie = {'movie':content}
+    return render(request, 'movie_description.html', movie)
 
 def get_movies(request):
      url = "https://flixster.p.rapidapi.com/search"

@@ -47,6 +47,9 @@ movie_description
 .my-3{
   color: black
 }
+li{
+  color: #000000;
+}
 
 body {
   font-family:
@@ -320,7 +323,9 @@ body {
   font-family: inherit;
   line-height: inherit;
 }
-
+.lead{
+  color:#000000;
+}
 /**
  * 1. Prevent padding and border from affecting element width.
  *

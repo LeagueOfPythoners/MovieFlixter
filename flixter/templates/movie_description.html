@@ -19,12 +19,12 @@
         </div> 
         <div class="col-md-7 shadow-lg p-3 mb-5 bg-white rounded">
           <h1 class="my-3">Movie Description</h1>
-          <p class = "lead">{{ movie.description }}</p>
+          <p class = "lead" style="color: 'black'">{{ movie.description }}</p>
           <h2 class="my-3">Movie Details</h2>
           <ul>
-            <li>{{ movie.rating }}</li>
-            <li>{{ movie.tags }}</li>
-            <li>{{ movie.date }}</li>
+            <li>Rating: {{ movie.rating }}</li>
+            <li>Tags: {{ movie.tags }}</li>
+            <li>Release Date: {{ movie.date }}</li>
           </ul>
         </div>
     </div>
