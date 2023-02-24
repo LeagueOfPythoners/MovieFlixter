@@ -9,24 +9,24 @@
         <a href="top10">Top 10</a>
         <a href="upcoming">Upcoming</a>
         <a href="about">About</a>
+        
      {% comment %} <a href="about">About</a> {% endcomment %}
     </nav>
-{% endblock %}
-{% block content %}
+
 
 <div class = "container"> 
     <br><br>
     <div class="row"> 
         <div class="col-md-5">
           <br>
-          <img class="img-fluid" src="{{ meal.image_url }}" alt="" style = "width: 90%;">
+          <img class="img-fluid" src="{{ movie.image }}" alt="" style = "width: 90%;">
           <br><br>
-          <h3 class="card-title text-center ">{{ meal.name }}</h3>
+          <h3 class="card-title text-center ">{{ movie.name }}</h3>
         </div> 
         <div class="col-md-7 shadow-lg p-3 mb-5 bg-white rounded">
           <h1 class="my-3">Movie Description</h1>
           <p class = "lead">{{ movie.description }}</p>
-          <h1 class="my-3">Movie Details</h1>
+          <h2 class="my-3">Movie Details</h2>
           <ul>
             <li>{{ movie.rating }}</li>
             <li>{{ movie.tags }}</li>

@@ -37,146 +37,128 @@ def get_movies(request):
     return render (request, 'movie.html', {"all_movies": 
     all_movies} )
 
-def movie_description(request, id):
-    movie = Movie.objects.get(id = id)
-    print(movie)
-    return render (
-        request,
-        'movie_description.html',
-        {'movie': movie}
-    )
+
     
 
 # @register.filter
 # def get_item(dictionary, key):
 #     return dictionary.get(key)
 
-# headers = {
-# 	"X-RapidAPI-Key": os.getenv("API_KEY"),
-# 	"X-RapidAPI-Host": os.getenv("API_HOST") 
-#     }
+headers = {
+ 	"X-RapidAPI-Key": os.getenv("API_KEY"),
+ 	"X-RapidAPI-Host": os.getenv("API_HOST") 
+     }
 def home(request):
     return render(request, 'home.html')
 
 def about(request):
     return render(request,'about.html' )
 
+
 def top10(request):
-    return render(request, 'top10.html')
+     #get top 10 via reuqest limit popularity to 10
+     url = "https://flixster.p.rapidapi.com/movies/get-popularity"
+
+     response = requests.request("GET", url, headers=headers).json()
+     print(response)
+
+
+     movies = response['data']['popularity']
+     for i in movies:
+         if i['sortPopularity'] <11:
+             name_m = i['name']
+             image_url = i['posterImage']['url']
+             rating_m = i['tomatoRating']['tomatometer']
+             movie_id_m = i['emsVersionId']
+
+             try:
+                 m = TopTen.objects.get(name= name_m, image=image_url, movie_id = movie_id_m, rating= rating_m)
+             except TopTen.DoesNotExist:
+                 m = TopTen.objects.create(name= name_m, image=image_url, movie_id = movie_id_m, rating= rating_m)
+                 m.save()
+            
+            
+            
+     all_movies = TopTen.objects.all().values("name", "image", "rating", 'movie_id')
+     posts= {'posts': all_movies}
+     return render(request, 'top10.html', posts)
 
 def upcoming(request):
-    return render(request, 'upcoming.html')
-
-# def get_movies(request):
     
-#     url = 'https://flixster.p.rapidapi.com/movies/get-upcoming'
-#     querystring = {"countryId": "usa", "limit":"100"}
-#     response = requests.request("GET", url, headers=headers, params=querystring).json()
+    url = 'https://flixster.p.rapidapi.com/movies/get-upcoming'
+    querystring = {"countryId": "usa", "limit":"100"}
+    response = requests.request("GET", url, headers=headers).json()
 
 
-#     movies = response['data']['upcoming']
-#     for i in movies:
-#         name_m = i['name']
-#         image_url = i['posterImage']['url']
-#         release_date = i['releaseDate']
-#         emsId_m = i['emsVersionId']
-#         try:
+    movies = response['data']['upcoming']
+    for i in movies:
+        name_m = i['name']
+        image_url = i['posterImage']['url']
+        release_date = i['releaseDate']
+        emsId_m = i['emsVersionId']
+        try:
 
-#             m = Movie.objects.get(name= name_m, image=image_url, emsId = emsId_m, date= release_date)
-#         except Movie.DoesNotExist:
-#             m = Movie.objects.create(name= name_m, image=image_url, emsId = emsId_m, date= release_date)
-#             m.save()
+            m = Upcoming.objects.get(name= name_m, image=image_url, movie_id = emsId_m, date= release_date)
+        except Upcoming.DoesNotExist:
+            m = Upcoming.objects.create(name= name_m, image=image_url, movie_id = emsId_m, date= release_date)
+            m.save()
     
             
-#     all_movies = Movie.objects.all().values("name", "image", "date", "emsId")
-#     posts= {'posts': all_movies}
-#     return render(request, 'upcoming.html', posts)
+    all_movies = Upcoming.objects.all().values("name", "image", "date", "movie_id")
+    posts= {'posts': all_movies}
+   
+    return render(request, 'upcoming.html', posts)
 
 
+def movie_description(request, movie_id):
+     print('one_movie function')
+     url = "https://flixster.p.rapidapi.com/movies/detail"
 
+     querystring = {"emsVersionId": movie_id }
 
+     response = requests.request("GET", url, headers=headers, params=querystring).json()
+     single_movie = response['data']['movie']
+     print(single_movie['name'])
+     name_m = single_movie['name']
+     description_m = ''
+     try:
+         description_m = single_movie['synopsis']
+     except: 
+         description_m = "No sypnosis assigned yet."
 
+     date_m = ''
+     try:
+         date_m = single_movie['releaseDate']
+     except:
+         date_m = 'None'
+     image_m =''
+    # print(single_movie['posterImage']['url']==None)
+     try:
+         image_m = single_movie['posterImage']['url']
 
+     except:
+         image_m = 'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg'
 
+     tags_m = ''
 
-
-# def top10(request):
-#     #get top 10 via reuqest limit popularity to 10
-#     url = "https://flixster.p.rapidapi.com/movies/get-popularity"
-
-#     response = requests.request("GET", url, headers=headers).json()
-#     print(response)
-
-
-#     movies = response['data']['popularity']
-#     for i in movies:
-#         if i['sortPopularity'] <11:
-#             name_m = i['name']
-#             image_url = i['posterImage']['url']
-#             rating_m = i['tomatoRating']['tomatometer']
-#             emsId_m = i['emsVersionId']
-
-#             try:
-#                 m = models.TopTen.objects.get(name= name_m, image=image_url, emsId = emsId_m, rating= rating_m)
-#             except models.TopTen.DoesNotExist:
-#                 m = models.TopTen.objects.create(name= name_m, image=image_url, emsId = emsId_m, rating= rating_m)
-#                 m.save()
-            
-            
-            
-#     all_movies = models.TopTen.objects.all().values("name", "image", "rating", 'emsId')
-#     posts= {'posts': all_movies}
-#     return render(request, 'top10.html', posts)
-
-# def one_movie(request, emsId):
-#     print('one_movie function')
-#     url = "https://flixster.p.rapidapi.com/movies/detail"
-
-#     querystring = {"emsVersionId": emsId }
-
-#     response = requests.request("GET", url, headers=headers, params=querystring).json()
-#     single_movie = response['data']['movie']
-#     print(single_movie['name'])
-#     name_m = single_movie['name']
-#     description_m = ''
-#     try:
-#         description_m = single_movie['synopsis']
-#     except: 
-#         description_m = "No sypnosis assigned yet."
-
-#     date_m = ''
-#     try:
-#         date_m = single_movie['releaseDate']
-#     except:
-#         date_m = 'None'
-#     image_m =''
-#    # print(single_movie['posterImage']['url']==None)
-#     try:
-#         image_m = single_movie['posterImage']['url']
-
-#     except:
-#         image_m = 'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg'
-
-#     tags_m = ''
-
-#     try:
-#         tags_m = single_movie['genres'][0]['name']
-#     except: tags_m = 'No Genre Assigned'
+     try:
+         tags_m = single_movie['genres'][0]['name']
+     except: tags_m = 'No Genre Assigned'
 
     
 
-#     try:
-#         models.Movie.objects.get(name=name_m, description = description_m,
-#                                  tags = tags_m, date = date_m, image = image_m )
+     try:
+         Movie.objects.get(name=name_m, description = description_m,
+                                  tags = tags_m, date = date_m, image = image_m )
         
-#     except models.Movie.DoesNotExist:
-#         models.Movie.objects.update_or_create(name=name_m, description = description_m, 
-#                                  tags = tags_m, date = date_m, image = image_m )
+     except Movie.DoesNotExist:
+         Movie.objects.update_or_create(name=name_m, description = description_m, 
+                                  tags = tags_m, date = date_m, image = image_m )
         
          
-#     content = models.Movie.objects.get(name= name_m, description=description_m)
-#     post = {'post':content}
-#     return render(request, 'singlemovie.html', post)
+     content = Movie.objects.get(name= name_m, description=description_m)
+     movie = {'post':content}
+     return render(request, 'movie_description.html', movie)
 
 # def search(request):
 #     print('search function')
