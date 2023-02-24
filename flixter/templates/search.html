@@ -1,3 +1,4 @@
+{% extends 'base.html'%}
 <!DOCTYPE html>
 <html>
     <head>
@@ -23,6 +24,7 @@
                     {% comment %} <a href="about">About</a> {% endcomment %}
                 </nav>
             <main>
+            {% load static %}
             {% block content %}
             {% if searched %}
             <h1>Results for :{{searched}} </h1>
@@ -39,6 +41,21 @@
             {% endif %}
 
             {% endblock content %}
+
+            {% comment %} Updating search form to look nicer {% endcomment %}
+
+            {% comment %} {% load static %}
+            {% block content %} 
+                <div class = "container">
+                    <br>
+                    <br>
+                    <form method="GET">
+                        <input type = "text" name = "name" placeholder="Search..." class = "text-center">
+                        <button type = "submit" class = "btn-danger btn-sm">MOVIE SEARCH</button>
+                    </form> 
+                </div>  
+            {% endblock %}
+             {% endcomment %}
             
             </main>
             </div>
