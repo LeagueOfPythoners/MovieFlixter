@@ -23,55 +23,19 @@
                     {% comment %} <a href="about">About</a> {% endcomment %}
                 </nav>
             <main>
-            {% comment %} {% block content %}
-            
-                    {% for movie in posts %}
-                    <a href = "{{movie.emsId }}">
-                    <h3 class = "movie-title" >{{ movie.name }}</h3></a>
-                    <img class= "movie-image" src= "{{movie.image}}" style="width: 15em;" >
-                    <h4>Release Date: {{ movie.date }}</h4>
-
-                    {% endfor %}
-                    
-            {% endblock content %} {% endcomment %}
-            {% extends 'templates/base.html'%}
-            {% load static %}
             {% block content %}
-                <div class = "container">
-                    <div class = "text-center container">
-                        <br>
-                        {% comment %} <h2 class = "text-center">Search for Movies</h2>  {% endcomment %}
-                        <br>
-                        <form method="GET">
-                            <input type = "text" name = "name" placeholder="Search..." class = "text-center">
-                            <button type = "submit" class = "btn-danger btn-sm">SEARCH MOVIES</button>
-                        </form> 
-                    </div> 
-                    <br><br>
-                    <div class="row">
-                        {% for meal in all_movies %}
-                            <div class="col-md-4 col-sm-6 col-lg-3">
-                                <div class="card">
-                                    <img class="card-img-top" src="{{ movie.image }}" alt="Card image cap">
-                                    <div class="card-body text-center">
-                                        <p class="card-title">{{ movie.name }}</p>
-                                        <hr>
-                                        <p class="card-text">{{ movie.rating }}</p>
-                                        <a href="/templates/{{movie.id}}"
-                                        ><input
-                                            type="submit"
-                                            value="More Info"
-                                            class="btn btn-danger btn-sm"
-                                            type="button"
-                                    /></a>
-                                    </div>
-                                </div>
-                                <br><br><br>
-                            </div>
-                        {% endfor %}
-                    </div>
-                </div>
-            {% endblock %}
+            
+                   <h4 class = "movie-title" >{{ post.name }}</h4>
+                   {% if post.image %}
+                    <img class= "movie-image" src= "{{ post.image}}" style="width: 15em;" >
+                    {% endif %}
+                    <h4>Release Date: {{ post.date }}</h4>
+                    <p><strong>Description: </strong> {{ post.description }}</p>
+                    <h4>Genres: {{ post.tags }}</h4>
+
+                    
+            {% endblock content %}
+            
             </main>
             </div>
     </body>

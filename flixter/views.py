@@ -16,23 +16,25 @@ def get_movies(request):
     if 'name' in request.GET:
         name = request.GET['name']
         url = 'https://flixster.p.rapidapi.com/movies/get-upcoming' % name
-        response = requests.get(url)
+        querystring = {"countryId": "usa", "limit":"100"}
+        response = requests.request("GET", url, headers=headers, params=querystring)
         data = response.json()
-        movies = data['upcoming']
+        movies = data['movies']
 
         for i in movies:
             movie_data = Movie(
                 name = i['name'],
                 image = i['posterImage']['url'],
                 description = i['synopsis'],
-                tags = i['genres'][0]['name']
-                rating = i['tomatoRating']
-                movie_id = i['emsVersionId']
+                tags = i['genres'][0]['name'],
+                rating = i['tomatoRating'],
+                movie_id = i['emsVersionId'],
             )
+    
             movie_data.save()
             all_movies = Movie.objects.all().order_by('-id')
 
-    return render (request, 'templates/upcoming.html', { "all_movies": 
+    return render (request, 'movie.html', {"all_movies": 
     all_movies} )
     
 
@@ -44,13 +46,16 @@ def get_movies(request):
 # 	"X-RapidAPI-Key": os.getenv("API_KEY"),
 # 	"X-RapidAPI-Host": os.getenv("API_HOST") 
 #     }
-# def home(request):
-#     return render(request, 'home.html')
+def home(request):
+    return render(request, 'home.html')
 
-# def about(request):
-#     return render(request,'about.html' )
+def about(request):
+    return render(request,'about.html' )
 
-# def upcoming(request):
+def top10(request):
+    return render(request, 'top10.html')
+
+# def get_movies(request):
     
 #     url = 'https://flixster.p.rapidapi.com/movies/get-upcoming'
 #     querystring = {"countryId": "usa", "limit":"100"}
@@ -65,15 +70,23 @@ def get_movies(request):
 #         emsId_m = i['emsVersionId']
 #         try:
 
-#             m = models.Upcoming.objects.get(name= name_m, image=image_url, emsId = emsId_m, date= release_date)
-#         except models.Upcoming.DoesNotExist:
-#             m = models.Upcoming.objects.create(name= name_m, image=image_url, emsId = emsId_m, date= release_date)
+#             m = Movie.objects.get(name= name_m, image=image_url, emsId = emsId_m, date= release_date)
+#         except Movie.DoesNotExist:
+#             m = Movie.objects.create(name= name_m, image=image_url, emsId = emsId_m, date= release_date)
 #             m.save()
     
             
-#     all_movies = models.Upcoming.objects.all().values("name", "image", "date", "emsId")
+#     all_movies = Movie.objects.all().values("name", "image", "date", "emsId")
 #     posts= {'posts': all_movies}
 #     return render(request, 'upcoming.html', posts)
+
+
+
+
+
+
+
+
 
 # def top10(request):
 #     #get top 10 via reuqest limit popularity to 10

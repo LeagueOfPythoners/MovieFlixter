@@ -7,6 +7,6 @@ from flixter.models import TopTen
 
 @admin.register(Movie)
 class MovieAdmin(admin.ModelAdmin):
-    list_display = ("name", "description", "preview_image")
+    list_display = ("name", "description")
 admin.site.register(Upcoming)
 admin.site.register(TopTen)
