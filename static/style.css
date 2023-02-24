@@ -41,6 +41,13 @@ body {
 Improve consistency of default fonts in all browsers. (https://github.com/sindresorhus/modern-normalize/issues/3)
 */
 
+/* 
+movie_description
+*/
+.my-3{
+  color: black
+}
+
 body {
   font-family:
 		system-ui,
