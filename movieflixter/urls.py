@@ -24,8 +24,8 @@ from django.views.generic import RedirectView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-   # path('', include(flixterurls))
-    path('flixter/', include('flixter.urls')),
+    path('', include('flixter.urls'))
+    # path('flixter/', include('flixter.urls')),
 
 ]
 

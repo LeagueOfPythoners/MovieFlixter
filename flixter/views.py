@@ -3,7 +3,7 @@ from django.http import HttpResponse
 import requests
 import os
 from django.template.defaulttags import register
-# from models.py import models
+from .models import Movie, Upcoming, TopTen
 # Create your views here.
 @register.filter
 def get_item(dictionary, key):
