@@ -124,9 +124,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = BASE_DIR/'static_root' # os.path.join(BASE_DIR, 'static')
 MEDIA_ROOT = os.path.join(BASE_DIR, )
 MEDIA_URL = '/media/'
+
+STATICFILES_DIRS=[
+    BASE_DIR/'static'
+]
 # media will be uploaded into a folder named media at the root of the directory
 # This could be used to link to movie previews
 # Default primary key field type

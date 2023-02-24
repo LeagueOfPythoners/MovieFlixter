@@ -1,0 +1,14 @@
+{% load static %}
+<nav class="flex text-gray-100 justify-between items-center py-3 px-4 fixed w-full z-50">
+    <div class="w-6/12">
+        <a href='/'>
+        
+        <img src="{% static 'logo.png' %}" alt="logo" class="w-5/12 md:w-2/12">
+        </a>
+    </div>
+    <a class="nav-link" href="home">Home</a>
+    <a class="nav-link" href="movie">Movie</a>
+    <a class="nav-link" href="top10">Top 10</a>
+    <a class="nav-link" href="upcoming">Upcoming</a>
+    <a class="nav-link" href="about">About</a>
+</nav>
