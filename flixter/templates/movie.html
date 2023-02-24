@@ -21,12 +21,32 @@
             <main>
             {% block content %}
          {% include "navbar.html" %}
+         <br>
+         <br>
+         <br>
+         <br>
+         <br>
+
+         <form class ="d-flex" method=POST action ="search" >
+              
+                {% csrf_token %}
+
+                <input class= "form-control" type="search" placeholder= "Search a Movie" aria-label="Search"
+                name = 'searched'>
+                
+                <button class= "btn-outline-secondary" type="submit">Search</button>
+        </form>
+<br>
+<br>
+
 
             {% if searched %}
-            <h1>Results for :{{searched}} </h1>
+        <h2>Results for : <strong>{{searched}} <strong></h2>
+        <br>
+
                 {% for i in content %}
                 
-                <a href="{{i.emsId}}"><h3>{{i.name}}</h3></a>
+                <a href="{{i.movie_id}}"><h3>{{i.name}}</h3></a>
 
                 {% endfor %}
             
@@ -35,6 +55,7 @@
             <h1>No results</h1>
 
             {% endif %}
+
 
             {% endblock content %}
 
