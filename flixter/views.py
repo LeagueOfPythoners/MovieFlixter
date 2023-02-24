@@ -54,6 +54,9 @@ def home(request):
 def about(request):
     return render(request,'about.html' )
 
+def contact(request):
+    return render(request, 'contact.html')
+
 
 def top10(request):
      #get top 10 via reuqest limit popularity to 10
