@@ -30,6 +30,6 @@ urlpatterns = [
     # path('search', views.search, name= 'flixter-search'),
     # path('<str:emsId>', views.one_movie, name = "single-movie"),
     path('', views.get_movies, name = "get_movies"),
-    # path('movies/<int:id>/',views.movies_description, name = "movie_description")
+    path('movies/<int:id>/',views.movies_description, name = "movie_description")
 
 ]

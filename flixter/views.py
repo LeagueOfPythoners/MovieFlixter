@@ -36,6 +36,15 @@ def get_movies(request):
 
     return render (request, 'movie.html', {"all_movies": 
     all_movies} )
+
+def movie_detail(request, id):
+    movie = Movie.objects.get(id = id)
+    print(movie)
+    return render (
+        request,
+        'movie_description.html',
+        {'movie': movie}
+    )
     
 
 # @register.filter
