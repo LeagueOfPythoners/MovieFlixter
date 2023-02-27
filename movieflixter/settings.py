@@ -28,6 +28,8 @@ SECRET_KEY = 'django-insecure-p_a-zahgra4e9i5(g26d!rmo*g%8!=v)b6%*mv4lzbprc_59)e
 DEBUG = True
 
 ALLOWED_HOSTS = []
+# File set to allowed_hosts configuration to accept all hosts
+
 # API_HOST = flixter.p.rapidapi.co
 # API_KEY = "60b5bc4261msh9a822a0d64206fep18f1c4jsn9f7333edb31f"
 
