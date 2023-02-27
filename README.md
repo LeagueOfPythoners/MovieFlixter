@@ -166,7 +166,7 @@ This project is created as a use for a blog. It also has the opportunity for bei
 - [ ] Update the style to be more modern
 
 
-See the [open issues](https://github.com/greywoulf/greywoulf.github.io/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/LeagueOfPythoners/MovieFlixter/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -204,7 +204,7 @@ Image resource contributions under the Vecteezy License. See `Vecteezy-License-I
 
 Your Name - [LeagueOfPythoners](https://twitter.com/twitter_handle) - email@email_client.com
 
-Project Link: [https://github.com/greywoulf/greywoulf.github.io](https://github.com/greywoulf/greywoulf.github.io)
+Project Link: [https://github.com/LeagueOfPythoners/MovieFlixter](https://github.com/greywoulf/greywoulf.github.io)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
