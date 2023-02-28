@@ -53,7 +53,9 @@ def top10(request):
                  m = TopTen.objects.get(name= name_m, image=image_url, movie_id = movie_id_m, rating= rating_m)
              except TopTen.DoesNotExist:
                  m = TopTen.objects.create(name= name_m, image=image_url, movie_id = movie_id_m, rating= rating_m)
+                 nm= Movie.objects.create(name= name_m, image=image_url, movie_id = movie_id_m, rating = rating_m)
                  m.save()
+                 nm.save()
             
             
             
@@ -79,7 +81,9 @@ def upcoming(request):
             m = Upcoming.objects.get(name= name_m, image=image_url, movie_id = emsId_m, date= release_date)
         except Upcoming.DoesNotExist:
             m = Upcoming.objects.create(name= name_m, image=image_url, movie_id = emsId_m, date= release_date)
+            nm = Movie.objects.create(name= name_m, image=image_url, movie_id = emsId_m, date= release_date)
             m.save()
+            nm.save()
     
             
     all_movies = Upcoming.objects.all().values("name", "image", "date", "movie_id")
@@ -94,6 +98,8 @@ def movie_description(request, movie_id):
     querystring = {"emsVersionId": movie_id }
 
     response = requests.request("GET", url, headers=headers, params=querystring).json()
+    if(response is None):
+             return render(request, 'none.html')
     single_movie = response['data']['movie']
     name_m = single_movie['name']
 
@@ -136,20 +142,22 @@ def movie_description(request, movie_id):
     movie = {'movie':content}
     return render(request, 'movie_description.html', movie)
 
-def get_movies(request):
+def search_movies(request):
      url = "https://flixster.p.rapidapi.com/search"
      if request.method != "POST":
-         return render(request, 'movie.html', {})
+         return render(request, 'search.html', {})
      else:
          searched = request.POST.get('searched')
          querystring = {"query":searched}
-         response = requests.request("GET", url, headers=headers, params=querystring).json()
+         resp = requests.request("GET", url, headers=headers, params=querystring)
+         response = resp.json()
          data = response['data']['search']['movies']
 
          m_name= ''
          m_image = ''
          m_emsId = ''
-
+         
+           
          for i in data:
          #get name
              m_name = i['name']
@@ -176,9 +184,24 @@ def get_movies(request):
                      m.save()
 
          content = Movie.objects.filter(name__contains=searched).values("name", "movie_id", "image")
+         all = Movie.objects.all().values("name", "image", "movie_id" )
+         return render(request,'search.html', {'searched':searched,
+                 'content':content})
+
+
+
+
+def get_movies(request):
+    url = "https://flixster.p.rapidapi.com/search"
         
-         return render(request,'movie.html', {'searched':searched,
-                 'content':content} )
+    all = Movie.objects.all().values("name", "image", "movie_id" )
+    print(all)
+    if(all):
+        return render(request,'movies.html', {'all': all} )
+
+    else:
+        return render(request, 'none.html', {})
+ 
 
 
 

@@ -21,27 +21,26 @@
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
 <!-- [![LinkedIn][linkedin-shield]][linkedin-url] -->
 
 
 
 <!-- PROJECT LOGO -->
-<!-- <br />
+<br />
 <div align="center">
-  <a href="https://github.com/greywoulf/greywoulf.github.io">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a> -->
+  <a href="https://movieflixter.greywoulf1.repl.co/home">
+    <img src="static/logo.PNG" alt="Logo" width="80" height="80">
+  </a> 
 
-<h3 align="center"MovieFlixter</h3>
+<h3 align="center">MOVIEFLIXTER APPLICATION</h3>
 
   <p align="center">
-    This project was for the creation of a final coding project within our cohort.
+    This project was for the creation of a group project creating a MVP Application that applied our knowledge of Routing, Navigation and Unit Tests. 
     <br />
-<!--     <a href="https://github.com/greywoulf/greywoulf.github.io"><strong>Explore the docs »</strong></a> -->
+<!--     <a href="https://github.com/LeagueOfPythoners/MovieFlixter"><strong>Explore the docs »</strong></a> -->
     <br />
     <br />
-    <a href="https://greywoulf.github.io/index.html">View Demo</a>
+    <a href="https://movieflixter.greywoulf1.repl.co/home">View Demo</a>
     ·
     <a href="https://github.com/LeagueOfPythoners/MovieFlixter/issues">Report Bug</a>
     ·
@@ -110,35 +109,32 @@ To get a local copy up and running follow these simple steps.
 
 ### Prerequisites
 
-npm
-  ```sh
-  npm install nodejs
-  ```
- Make sure the Live Server extension is installed if using VSCode
+Install Python
+  
+Follow this link if installing python on VSCode: https://learn.microsoft.com/en-us/windows/python/beginners
 
 ### Installation
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/greywoulf/greywoulf.github.io.git
+   git clone https://github.com/LeagueOfPythoners/MovieFlixter.git
    ```
-2. Install NPM packages
+2. Install Django package
    ```sh
-   npm install
+   python -m pip intall Django
    ```
-3. Right click on `index.html`
+3. Run Django Server
    ```
-   Open with Live Server;
+   python manage.py runserver
    ```
-4. Or open and run `index.html` with your local host
-
+   
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
 
 
 ## Deployed Application Link
-https://greywoulf.github.io/index.html
+https://movieflixter.greywoulf1.repl.co/home
 
 Application can also be viewd by using the View Demo button at the top
 
@@ -193,7 +189,7 @@ Don't forget to give the project a star! Thanks again!
 <!-- LICENSE -->
 ## License
 
-Image resource contributions under the Vecteezy License. See `Vecteezy-License-Information.pdf` for more information.
+License under the MIT License. See `LICENSE.txt` for more information.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -204,7 +200,7 @@ Image resource contributions under the Vecteezy License. See `Vecteezy-License-I
 
 Your Name - [LeagueOfPythoners](https://twitter.com/twitter_handle) - email@email_client.com
 
-Project Link: [https://github.com/LeagueOfPythoners/MovieFlixter](https://github.com/greywoulf/greywoulf.github.io)
+Project Link: [https://github.com/LeagueOfPythoners/MovieFlixter](https://LeagueOfPythoners/MovieFlixter)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -228,11 +224,10 @@ Project Link: [https://github.com/LeagueOfPythoners/MovieFlixter](https://github
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-For inspiration, images and code snippets used in the creation of this blog website.
+For inspiration, images and code snippets used in the creation of this website.
 
-* [Online Tutorials](https://www.youtube.com/watch?v=gggB0Nq5vBk)
-* [Daily Tuition](https://www.youtube.com/watch?v=CrSC1ZA9j0M&t=6288s)
-* [Vecteezy.com](https://www.vecteezy.com/)
+* [Canva](https://www.canva.com/templates/)
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -249,7 +244,7 @@ For inspiration, images and code snippets used in the creation of this blog webs
 [issues-shield]: https://img.shields.io/github/issues/LeagueOfPythoners/MovieFlixter.svg?style=for-the-badge
 [issues-url]: https://github.com/LeagueOfPythoners/MovieFlixter/issues
 [license-shield]: https://img.shields.io/github/licenseLeagueOfPythoners/MovieFlixter.svg?style=for-the-badge
-[license-url]: https://github.com/LeagueOfPythoners/MovieFlixter/blob/master/LICENSE.txt
+[license-url]: https://github.com/LeagueOfPythoners/MovieFlixter/blob/briana/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/linkedin_username
 [product-screenshot]: images/screenshot.png

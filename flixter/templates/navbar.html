@@ -6,10 +6,11 @@
         <img src="{% static 'logo.png' %}" alt="logo" class="w-5/12 md:w-2/12">
         </a>
     </div>
-    <a class="nav-link" href="home">Home</a>
-    <a class="nav-link" href="movie">Movie</a>
-    <a class="nav-link" href="top10">Top 10</a>
-    <a class="nav-link" href="upcoming">Upcoming</a>
-    <a class="nav-link" href="about">About</a>
-    <a class="nav-link" href="contact">Contact</a>
+    <a class="nav-link" href="{% url 'home' %}">Home</a>
+    <a class="nav-link" href="{% url 'search' %}">Search</a>
+    <a class="nav-link" href="{% url 'movies' %}">Movies</a>
+    <a class="nav-link" href="{% url 'top10' %}">Top 10</a>
+    <a class="nav-link" href="{% url 'upcoming' %}">Upcoming</a>
+    <a class="nav-link" href="{% url 'about' %}">About</a>
+    <a class="nav-link" href="{% url 'contact' %}">Contact</a>
 </nav>

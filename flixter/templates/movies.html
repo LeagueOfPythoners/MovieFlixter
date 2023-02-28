@@ -1,0 +1,39 @@
+{% extends 'base.html'%}
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>MovieFlixter</title>
+    </head>
+    <body>
+            {% block content %}
+            {% include "navbar.html" %}
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            {% if all %}
+                {% for i in all %}
+                
+                <a href="{{i.emsId}}"><h3>{{i.name}}</h3></a>
+                <img src="{{i.image}}" alt="{{i.name}} image">
+                <br>
+                {% endfor %}
+            
+            {% else %}
+
+            <h1>Our API only allows for recently viewed movies to display. We apologize for the inconvenience.</h1>
+
+            {% endif %}
+
+            {% endblock content %}
+
+      
+            
+            </main>
+            </div>
+    </body>
+</html>

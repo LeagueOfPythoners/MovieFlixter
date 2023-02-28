@@ -33,7 +33,7 @@
                     {% for movie in posts %} 
 
                     <div class= "movie-column">
-                    <a href = "{{ movie.movie_id }}">
+                    <a href = "movies/{{ movie.movie_id }}">
                     <h3 class = "movie-title" >{{ movie.name }}</h3></a>
                                         <h4>Rotten Tomato Rating: {{ movie.rating }}</h4>
 

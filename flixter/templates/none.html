@@ -29,30 +29,10 @@
          <br>
          <br>
          <br>
-         <form class ="d-flex" method=POST action ="search" >
-              
-                {% csrf_token %}
-
-                <input class= "form-control" type="search" placeholder= "Search a Movie" aria-label="Search"
-                name = 'searched'>
-                
-                <button class= "btn-outline-secondary" type="submit">Search</button>
-             </form>
-
-
-            {% if searched %}
-            <h1>Results for :{{searched}} </h1>
-                {% for i in content %}
-                
-                <a href="{{i.movie_id}}"><h3>{{i.name}}</h3></a>
-
-                {% endfor %}
-            
-            {% else %}
-<br>
-            <h1>No results</h1>
-
-            {% endif %}
+          
+          <h1>Uh Oh...</h1>
+          <h3>This link is broken/Movie has no contents</h3>
+        <h3>Please try another search! </h3>
 
 
             {% endblock content %}
