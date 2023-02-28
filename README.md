@@ -21,7 +21,6 @@
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
 <!-- [![LinkedIn][linkedin-shield]][linkedin-url] -->
 
 
@@ -33,19 +32,19 @@
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a> -->
 
-<h3 align="center"MovieFlixter</h3>
+<h3 align="center">TO DO LIST CRUD APPLICATION</h3>
 
   <p align="center">
-    This project was for the creation of a final coding project within our cohort.
+    This project was for the creation of a group project creating a CRUD Application that applied our knowledge of User Registration and Authentication. 
     <br />
 <!--     <a href="https://github.com/greywoulf/greywoulf.github.io"><strong>Explore the docs »</strong></a> -->
     <br />
     <br />
-    <a href="https://greywoulf.github.io/index.html">View Demo</a>
+    <a href="https://todo-application.greywoulf1.repl.co/login/">View Demo</a>
     ·
-    <a href="https://github.com/LeagueOfPythoners/MovieFlixter/issues">Report Bug</a>
+    <a href="https://github.com/greywoulf/Todo-Application/issues">Report Bug</a>
     ·
-    <a href="https://github.com/LeagueOfPythoners/MovieFlixter/issues">Request Feature</a>
+    <a href="https://github.com/greywoulf/Todo-Application/issues">Request Feature</a>
   </p>
 </div>
 
