@@ -46,7 +46,6 @@ Pillow==9.0.1
 # pylev==1.4.0
 # pyparsing==3.0.9
 # python-dateutil==2.8.2
-python_version == 3.10
 # pytz==2022.1
 # pywin32-ctypes==0.2.0
 # PyYAML==6.0
