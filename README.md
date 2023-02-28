@@ -28,7 +28,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://movieflixter.greywoulf1.repl.co/home">
+  <a href="https://flixter-movie-app.herokuapp.com/home">
     <img src="static/logo.PNG" alt="Logo" width="80" height="80">
   </a> 
 
@@ -150,7 +150,7 @@ Follow this link if installing python on VSCode: https://learn.microsoft.com/en-
 
 
 ## Deployed Application Link
-https://movieflixter.greywoulf1.repl.co/home
+https://flixter-movie-app.herokuapp.com/home
 
 Application can also be viewd by using the View Demo button at the top
 
