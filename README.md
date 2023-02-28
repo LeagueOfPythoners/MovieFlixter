@@ -82,7 +82,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-![Product Name Screen Shot](https://i.imgur.com/SlcyXku.png)
+![Product Name Screen Shot](https://i.imgur.com/wcvWaFK.png)
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -113,6 +113,14 @@ Install Python
   
 Follow this link if installing python on VSCode: https://learn.microsoft.com/en-us/windows/python/beginners
 
+### API Key/Token
+
+1. Create an account on RapidApi
+   https://rapidapi.com/
+   
+2. Subscribe to Flixter Api (for free)
+   https://rapidapi.com/apidojo/api/flixster
+   
 ### Installation
 
 1. Clone the repo
@@ -123,7 +131,14 @@ Follow this link if installing python on VSCode: https://learn.microsoft.com/en-
    ```sh
    python -m pip intall Django
    ```
-3. Run Django Server
+3. Within the views.py file add the api key and host from RapidApi to the header
+   ```sh
+   headers = {
+        'X-RapidAPI-Key': '4c34e8e909msh0182558b0376821p131673jsnd7c2614b3ae7',
+        'X-RapidAPI-Host': 'flixster.p.rapidapi.com'
+   }
+   ```
+4. Run Django Server
    ```
    python manage.py runserver
    ```
@@ -146,7 +161,7 @@ Application can also be viewd by using the View Demo button at the top
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-This project is created as a use for a blog. It also has the opportunity for being useful as a personal website template as well. 
+This project is created as an MVP Application. It also has the opportunity for being used as a movie website template. 
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
