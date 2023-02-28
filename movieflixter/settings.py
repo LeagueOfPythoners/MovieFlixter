@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-p_a-zahgra4e9i5(g26d!rmo*g%8!=v)b6%*mv4lzbprc_59)e
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 # File set to allowed_hosts configuration to accept all hosts
 
 # API_HOST = flixter.p.rapidapi.co
