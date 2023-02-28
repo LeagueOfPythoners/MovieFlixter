@@ -26,11 +26,11 @@
 
 
 <!-- PROJECT LOGO -->
-<!-- <br />
+<br />
 <div align="center">
   <a href="https://movieflixter.greywoulf1.repl.co/home">
     <img src="static/logo.PNG" alt="Logo" width="80" height="80">
-  </a> -->
+  </a> 
 
 <h3 align="center">MOVIEFLIXTER APPLICATION</h3>
 
