@@ -113,6 +113,21 @@ Install Python
   
 Follow this link if installing python on VSCode: https://learn.microsoft.com/en-us/windows/python/beginners
 
+### API Key/Token
+
+1. Create an account on RapidApi
+   https://rapidapi.com/
+   
+2. Subscribe to Flixter Api (for free)
+   https://rapidapi.com/apidojo/api/flixster
+   
+3. Within the views.py file add the api key and host to the header
+   ```sh
+   headers = {
+        'X-RapidAPI-Key': '4c34e8e909msh0182558b0376821p131673jsnd7c2614b3ae7',
+        'X-RapidAPI-Host': 'flixster.p.rapidapi.com'
+   }
+   ```
 ### Installation
 
 1. Clone the repo
