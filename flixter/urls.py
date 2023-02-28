@@ -24,6 +24,7 @@ from . import views
 urlpatterns = [
     #path('', views.home, name= 'flixter-home'),
     path('None', views.get_movies, name = 'none' ),
+    path('', views.home, name = 'views-home'),
     path('home', views.home, name= 'home'),
     path('search', views.search_movies, name = "search"),
     path('about', views.about, name = 'about' ),
