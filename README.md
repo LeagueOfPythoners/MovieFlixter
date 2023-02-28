@@ -28,8 +28,8 @@
 <!-- PROJECT LOGO -->
 <!-- <br />
 <div align="center">
-  <a href="https://github.com/greywoulf/greywoulf.github.io">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+  <a href="https://movieflixter.greywoulf1.repl.co/home">
+    <img src="static/logo.PNG" alt="Logo" width="80" height="80">
   </a> -->
 
 <h3 align="center">MOVIEFLIXTER APPLICATION</h3>
@@ -37,10 +37,10 @@
   <p align="center">
     This project was for the creation of a group project creating a MVP Application that applied our knowledge of Routing, Navigation and Unit Tests. 
     <br />
-<!--     <a href="https://github.com/greywoulf/greywoulf.github.io"><strong>Explore the docs »</strong></a> -->
+<!--     <a href="https://github.com/LeagueOfPythoners/MovieFlixter"><strong>Explore the docs »</strong></a> -->
     <br />
     <br />
-    <a href="https://todo-application.greywoulf1.repl.co/login/">View Demo</a>
+    <a href="https://movieflixter.greywoulf1.repl.co/home">View Demo</a>
     ·
     <a href="https://github.com/LeagueOfPythoners/MovieFlixter/issues">Report Bug</a>
     ·
