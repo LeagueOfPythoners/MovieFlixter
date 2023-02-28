@@ -134,7 +134,7 @@ Follow this link if installing python on VSCode: https://learn.microsoft.com/en-
 
 
 ## Deployed Application Link
-https://greywoulf.github.io/index.html
+https://movieflixter.greywoulf1.repl.co/home
 
 Application can also be viewd by using the View Demo button at the top
 
