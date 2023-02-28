@@ -161,7 +161,7 @@ Application can also be viewd by using the View Demo button at the top
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-This project is created as a use for a blog. It also has the opportunity for being useful as a personal website template as well. 
+This project is created as an MVP Application. It also has the opportunity for being used as a movie website template. 
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
