@@ -121,13 +121,6 @@ Follow this link if installing python on VSCode: https://learn.microsoft.com/en-
 2. Subscribe to Flixter Api (for free)
    https://rapidapi.com/apidojo/api/flixster
    
-3. Within the views.py file add the api key and host to the header
-   ```sh
-   headers = {
-        'X-RapidAPI-Key': '4c34e8e909msh0182558b0376821p131673jsnd7c2614b3ae7',
-        'X-RapidAPI-Host': 'flixster.p.rapidapi.com'
-   }
-   ```
 ### Installation
 
 1. Clone the repo
@@ -138,7 +131,14 @@ Follow this link if installing python on VSCode: https://learn.microsoft.com/en-
    ```sh
    python -m pip intall Django
    ```
-3. Run Django Server
+3. Within the views.py file add the api key and host from RapidApi to the header
+   ```sh
+   headers = {
+        'X-RapidAPI-Key': '4c34e8e909msh0182558b0376821p131673jsnd7c2614b3ae7',
+        'X-RapidAPI-Host': 'flixster.p.rapidapi.com'
+   }
+   ```
+4. Run Django Server
    ```
    python manage.py runserver
    ```
