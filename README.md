@@ -40,7 +40,7 @@
 <!--     <a href="https://github.com/LeagueOfPythoners/MovieFlixter"><strong>Explore the docs »</strong></a> -->
     <br />
     <br />
-    <a href="https://movieflixter.greywoulf1.repl.co/home">View Demo</a>
+    <a href="https://flixter-movie-app.herokuapp.com/home">View Demo</a>
     ·
     <a href="https://github.com/LeagueOfPythoners/MovieFlixter/issues">Report Bug</a>
     ·
