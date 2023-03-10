@@ -92,6 +92,19 @@
             <img src="{% static 'flixter_kid.PNG' %}" class="w-8/12" alt="">
         </div>
     </section>
+    <section>
+    <h2>Recently Viewed: </h2>
+    <br>
+    {% if all %}
+                {% for i in all %}
+                
+                <a href="movies/{{i.movie_id}}"><h3>{{i.name}}</h3></a>
+                <img src="{{i.image}}" alt="{{i.name}} image">
+                <br>
+                {% endfor %}
+                {% endif%}
+                
+    </section>
     <footer class=" px-5 py-10 ">
         <ul class="flex justify-between items-center">
             

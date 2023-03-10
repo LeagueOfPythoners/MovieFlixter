@@ -28,7 +28,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://movieflixter.greywoulf1.repl.co/home">
+  <a href="https://flixter-movie-app.herokuapp.com/home">
     <img src="static/logo.PNG" alt="Logo" width="80" height="80">
   </a> 
 
@@ -40,7 +40,7 @@
 <!--     <a href="https://github.com/LeagueOfPythoners/MovieFlixter"><strong>Explore the docs »</strong></a> -->
     <br />
     <br />
-    <a href="https://movieflixter.greywoulf1.repl.co/home">View Demo</a>
+    <a href="https://flixter-movie-app.herokuapp.com/home">View Demo</a>
     ·
     <a href="https://github.com/LeagueOfPythoners/MovieFlixter/issues">Report Bug</a>
     ·
@@ -150,7 +150,7 @@ Follow this link if installing python on VSCode: https://learn.microsoft.com/en-
 
 
 ## Deployed Application Link
-https://movieflixter.greywoulf1.repl.co/home
+https://flixter-movie-app.herokuapp.com/home
 
 Application can also be viewd by using the View Demo button at the top
 
@@ -214,7 +214,7 @@ License under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [LeagueOfPythoners](https://twitter.com/twitter_handle) - email@email_client.com
+LeagueOfPythoners - [Twitter](https://twitter.com/twitter_handle) - email@email_client.com
 
 Project Link: [https://github.com/LeagueOfPythoners/MovieFlixter](https://LeagueOfPythoners/MovieFlixter)
 

@@ -25,7 +25,9 @@ headers = {
  	"X-RapidAPI-Host": os.getenv("API_HOST") 
      }
 def home(request):
-    return render(request, 'home.html')
+    all = Movie.objects.all().values("name", "image", "movie_id" )
+   
+    return render(request, 'home.html', {'all':all})
 
 def about(request):
     return render(request,'about.html' )
