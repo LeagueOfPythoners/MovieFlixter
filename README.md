@@ -132,13 +132,7 @@ Follow this link if installing python on VSCode: https://learn.microsoft.com/en-
    ```sh
    python -m pip intall Django
    ```
-3. Within the views.py file add the api key and host from RapidApi to the header
-   ```sh
-   headers = {
-        'X-RapidAPI-Key': '4c34e8e909msh0182558b0376821p131673jsnd7c2614b3ae7',
-        'X-RapidAPI-Host': 'flixster.p.rapidapi.com'
-   }
-   ```
+3. Messages us for API Key
 4. Run Django Server
    ```
    python manage.py runserver
